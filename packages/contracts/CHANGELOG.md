@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/DigitalKitchenLabs/interface/compare/@coolcatnetwork/contracts@0.10.7...@coolcatnetwork/contracts@0.11.0) (2023-03-28)
+
+**Note:** Version bump only for package @coolcatnetwork/contracts
+
+
+
+
+
 ## 0.10.7 (2023-03-28)
 
 **Note:** Version bump only for package @coolcatnetwork/contracts
