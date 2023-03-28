@@ -9,7 +9,7 @@
   "registry": "https://registry.npmjs.org",
   "command": {
     "create": {
-      "homepage": "https://github.com/DigitalKitchenLabs/interface",
+      "homepage": "https://github.com/DigitalKitchenLabs/coolcat-ts",
       "license": "SEE LICENSE IN LICENSE",
       "access": "restricted"
     },

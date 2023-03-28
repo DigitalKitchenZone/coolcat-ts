@@ -1,5 +1,5 @@
 {
-  "name": "@coolcatchain/contracts",
+  "name": "@coolcatchain/coolcatnetwork",
   "version": "0.10.4",
   "description": "CoolCat contracts",
   "author": "Marius Modlich <marius@digitalkitchen.zone>",
@@ -81,5 +81,5 @@
     "@cosmjs/stargate": "0.30.1",
     "cosmwasm": "1.1.1"
   },
-  "gitHead": "40d597593694030bac29bc8fe09ede3d83ff44a4"
+  "gitHead": "beb4250703658ac0b63c790033aa0626c48d8b28"
 }

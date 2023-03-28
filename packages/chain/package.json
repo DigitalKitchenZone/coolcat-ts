@@ -1,5 +1,5 @@
 {
-  "name": "@coolcatchain/chain",
+  "name": "@coolcatnetwork/chain",
   "version": "0.10.4",
   "description": "An interface to connect any TypeScript application to the CoolCat network.",
   "author": "Marius Modlich <marius@digitalkitchen.zone>",
@@ -88,5 +88,5 @@
     "@cosmjs/tendermint-rpc": "^0.30.1",
     "protobufjs": "^6.11.2"
   },
-  "gitHead": "40d597593694030bac29bc8fe09ede3d83ff44a4"
+  "gitHead": "beb4250703658ac0b63c790033aa0626c48d8b28"
 }
