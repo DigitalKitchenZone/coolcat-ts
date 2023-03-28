@@ -1,0 +1,28 @@
+import { Rpc } from "../../../helpers";
+import * as _m0 from "protobufjs/minimal";
+import { MsgCreateVestingAccount, MsgCreateVestingAccountResponse } from "./tx";
+/** Msg defines the alloc Msg service. */
+
+export interface Msg {
+  /**
+   * CreateVestingAccount defines a method that enables creating a vesting
+   * account.
+   */
+  createVestingAccount(request: MsgCreateVestingAccount): Promise<MsgCreateVestingAccountResponse>;
+}
+export class MsgClientImpl implements Msg {
+  private readonly rpc: Rpc;
+
+  constructor(rpc: Rpc) {
+    this.rpc = rpc;
+  }
+  /* CreateVestingAccount defines a method that enables creating a vesting
+   account. */
+
+
+  createVestingAccount = async (request: MsgCreateVestingAccount): Promise<MsgCreateVestingAccountResponse> => {
+    const data = MsgCreateVestingAccount.encode(request).finish();
+    const promise = this.rpc.request("coolcat.alloc.v1beta1.Msg", "CreateVestingAccount", data);
+    return promise.then(data => MsgCreateVestingAccountResponse.decode(new _m0.Reader(data)));
+  };
+}

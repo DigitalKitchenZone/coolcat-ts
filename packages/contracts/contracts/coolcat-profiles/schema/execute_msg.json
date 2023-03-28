@@ -1,0 +1,276 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ExecuteMsg",
+  "oneOf": [
+    {
+      "description": "Updates the minting fees configured at contract instantiation",
+      "type": "object",
+      "required": [
+        "update_minting_fees"
+      ],
+      "properties": {
+        "update_minting_fees": {
+          "$ref": "#/definitions/UpdateMintingFeesMsg"
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "description": "Updates the username length cap",
+      "type": "object",
+      "required": [
+        "update_username_length_cap"
+      ],
+      "properties": {
+        "update_username_length_cap": {
+          "type": "object",
+          "required": [
+            "new_length"
+          ],
+          "properties": {
+            "new_length": {
+              "type": "integer",
+              "format": "uint32",
+              "minimum": 0.0
+            }
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "description": "Updates the metadata of the NFT",
+      "type": "object",
+      "required": [
+        "update_metadata"
+      ],
+      "properties": {
+        "update_metadata": {
+          "$ref": "#/definitions/UpdateMetadataMsg"
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "description": "Destroys the NFT permanently.",
+      "type": "object",
+      "required": [
+        "burn"
+      ],
+      "properties": {
+        "burn": {
+          "type": "object",
+          "required": [
+            "token_id"
+          ],
+          "properties": {
+            "token_id": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "description": "Set admin",
+      "type": "object",
+      "required": [
+        "set_admin_address"
+      ],
+      "properties": {
+        "set_admin_address": {
+          "type": "object",
+          "required": [
+            "admin_address"
+          ],
+          "properties": {
+            "admin_address": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "description": "Mint a new NFT",
+      "type": "object",
+      "required": [
+        "mint"
+      ],
+      "properties": {
+        "mint": {
+          "$ref": "#/definitions/MintMsg_for_Metadata"
+        }
+      },
+      "additionalProperties": false
+    }
+  ],
+  "definitions": {
+    "Metadata": {
+      "type": "object",
+      "properties": {
+        "banner": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "bio": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "discord": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "email": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "public_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "telegram": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "twitter": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "MintMsg_for_Metadata": {
+      "type": "object",
+      "required": [
+        "extension",
+        "owner",
+        "token_id"
+      ],
+      "properties": {
+        "extension": {
+          "description": "Any custom extension used by this contract",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Metadata"
+            }
+          ]
+        },
+        "owner": {
+          "description": "The owner of the newly minter NFT",
+          "type": "string"
+        },
+        "token_id": {
+          "description": "Unique ID of the NFT",
+          "type": "string"
+        },
+        "token_uri": {
+          "description": "Universal resource identifier for this NFT Should point to a JSON file that conforms to the ERC721 Metadata JSON Schema",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "SurchargeInfo": {
+      "type": "object",
+      "required": [
+        "surcharge_fee",
+        "surcharge_max_characters"
+      ],
+      "properties": {
+        "surcharge_fee": {
+          "description": "The surcharge fee. This plus any base mint fee add up to the total fixed cost of minting an NFT username this is assumed to be in native_denom for now, no other option is available, so if you e.g. want 1 ATOM, use 1000000 as this value (i.e. it is uatom)",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Uint128"
+            }
+          ]
+        },
+        "surcharge_max_characters": {
+          "description": "Max characters that are affected by the surcharge e.g. 5",
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0.0
+        }
+      }
+    },
+    "Uint128": {
+      "description": "A thin wrapper around u128 that is using strings for JSON encoding/decoding, such that the full u128 range can be used for clients that convert JSON numbers to floats, like JavaScript and jq.\n\n# Examples\n\nUse `from` to create instances of this and `u128` to get the value out:\n\n``` # use cosmwasm_std::Uint128; let a = Uint128::from(123u128); assert_eq!(a.u128(), 123);\n\nlet b = Uint128::from(42u64); assert_eq!(b.u128(), 42);\n\nlet c = Uint128::from(70u32); assert_eq!(c.u128(), 70); ```",
+      "type": "string"
+    },
+    "UpdateMetadataMsg": {
+      "type": "object",
+      "required": [
+        "metadata",
+        "token_id"
+      ],
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/Metadata"
+        },
+        "token_id": {
+          "type": "string"
+        }
+      }
+    },
+    "UpdateMintingFeesMsg": {
+      "description": "This can only be done by the contract admin Note that these fields will forcibly update what is already set You must be declarative and specify exactly the new desired behaviour",
+      "type": "object",
+      "properties": {
+        "base_mint_fee": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Uint128"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "burn_percentage": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint64",
+          "minimum": 0.0
+        },
+        "short_name_surcharge": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/SurchargeInfo"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "token_cap": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint32",
+          "minimum": 0.0
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ListUserInfoResponse",
+  "type": "object",
+  "required": [
+    "users"
+  ],
+  "properties": {
+    "users": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/UserInfo"
+      }
+    }
+  },
+  "definitions": {
+    "Metadata": {
+      "type": "object",
+      "properties": {
+        "banner": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "bio": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "discord": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "email": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "public_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "telegram": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "twitter": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "UserInfo": {
+      "type": "object",
+      "required": [
+        "alias",
+        "metadata",
+        "owner"
+      ],
+      "properties": {
+        "alias": {
+          "type": "string"
+        },
+        "metadata": {
+          "$ref": "#/definitions/Metadata"
+        },
+        "owner": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

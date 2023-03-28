@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ConfigResponse",
+  "description": "Top level config type for core module.",
+  "type": "object",
+  "required": [
+    "automatically_add_cw20s",
+    "automatically_add_cw721s",
+    "description",
+    "name"
+  ],
+  "properties": {
+    "automatically_add_cw20s": {
+      "description": "If true the contract will automatically add received cw20 tokens to its treasury.",
+      "type": "boolean"
+    },
+    "automatically_add_cw721s": {
+      "description": "If true the contract will automatically add received cw721 tokens to its treasury.",
+      "type": "boolean"
+    },
+    "banner": {
+      "description": "A CID to fetch the banner from IPFS",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "dao_uri": {
+      "description": "The URI for the DAO as defined by the DAOstar standard https://daostar.one/EIP",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "description": {
+      "description": "A description of the contract.",
+      "type": "string"
+    },
+    "logo": {
+      "description": "A CID to fetch the logo from IPFS",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "name": {
+      "description": "The name of the contract.",
+      "type": "string"
+    }
+  }
+}
